@@ -6,14 +6,22 @@ import LogoutPage from "./components/LogoutPage";
 import FetchUsersPage from "./components/FetchUsersPage";
 import FetchPostsPage from "./components/FetchPostsPage";
 import FetchWithErrorPage from "./components/FetchWithErrorPage";
+import DynamicPostsPage from "./components/DynamicPostsPage";
+import PaginatedUsersPage from "./components/PaginatedUsersPage";
+import SearchablePostsPage from "./components/SearchablePostsPage";
+import CachedUsersPage from "./components/CachedUsersPage";
+import MasterDetailPage from "./components/MasterDetailPage";
+import DebouncedSearchPage from "./components/DebouncedSearchPage";
+import InfiniteScrollPage from "./components/InfiniteScrollPage";
 
 function App() {
   return (
       <Router>
+        {/* Navigation Bar */}
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container-fluid">
             <Link className="navbar-brand" to="/">
-              React Tasks
+              React Task App
             </Link>
             <button
                 className="navbar-toggler"
@@ -28,6 +36,7 @@ function App() {
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav">
+                {/* Links for the old tasks */}
                 <li className="nav-item">
                   <Link className="nav-link" to="/register">
                     Register
@@ -58,22 +67,76 @@ function App() {
                     Fetch with Error
                   </Link>
                 </li>
+
+                {/* Links for the new tasks */}
+                <li className="nav-item">
+                  <Link className="nav-link" to="/dynamic-posts">
+                    Dynamic Posts
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/paginated-users">
+                    Paginated Users
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/searchable-posts">
+                    Searchable Posts
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/cached-users">
+                    Cached Users
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/master-detail">
+                    Master-Detail View
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/debounced-search">
+                    Debounced Search
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/infinite-scroll">
+                    Infinite Scroll
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
         </nav>
 
-
+        {/* Routes for all tasks */}
         <Routes>
-          <Route path="/register" element={<RegisterPage/>}/>
-          <Route path="/login" element={<LoginPage/>}/>
-          <Route path="/logout" element={<LogoutPage/>}/>
-          <Route path="/fetch-users" element={<FetchUsersPage/>}/>
-          <Route path="/fetch-posts" element={<FetchPostsPage/>}/>
-          <Route path="/fetch-error" element={<FetchWithErrorPage/>}/>
+          {/* Old Tasks */}
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/logout" element={<LogoutPage />} />
+          <Route path="/fetch-users" element={<FetchUsersPage />} />
+          <Route path="/fetch-posts" element={<FetchPostsPage />} />
+          <Route path="/fetch-error" element={<FetchWithErrorPage />} />
+
+          {/* New Tasks */}
+          <Route path="/dynamic-posts" element={<DynamicPostsPage />} />
+          <Route path="/paginated-users" element={<PaginatedUsersPage />} />
+          <Route path="/searchable-posts" element={<SearchablePostsPage />} />
+          <Route path="/cached-users" element={<CachedUsersPage />} />
+          <Route path="/master-detail" element={<MasterDetailPage />} />
+          <Route path="/debounced-search" element={<DebouncedSearchPage />} />
+          <Route path="/infinite-scroll" element={<InfiniteScrollPage />} />
+
+          {/* Default Route */}
           <Route
               path="/"
-              element={<div className="container mt-5">Welcome to the React Task App!</div>}
+              element={
+                <div className="container mt-5 text-center">
+                  <h1>Welcome to React Task App!</h1>
+                  <p>Select a task from the navigation menu above to get started.</p>
+                </div>
+              }
           />
         </Routes>
       </Router>
